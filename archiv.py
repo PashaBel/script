@@ -1,5 +1,6 @@
 import os
 import zipfile
+import pathlib
 import datetime
 from datetime import date
 
@@ -11,3 +12,16 @@ for folder, subfolder, files in os.walk('D:\\zip'):
         if file.endswith('.CSV'):
             zip_arhiv.write(os.path.join(folder, file), file, compress_type = zipfile.ZIP_DEFLATED)
 zip_arhiv.close()
+
+fileInZip = zipfile.ZipFile('D:\\zipout\\' + str(today.year) + '_' + str(today.month) + '.zip', 'r')
+
+for file in fileInZip.namelist():
+    zipFileName = file
+    for folder, subfolder, files in os.walk('D:\\zip'):
+        for file in files:
+            if file == zipFileName:
+                #path = pathlib.Path(file)
+                #path.unlink()
+                print('true')
+
+fileInZip.close()
