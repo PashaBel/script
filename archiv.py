@@ -3,9 +3,11 @@ import zipfile
 import datetime
 from datetime import date
 
+os.chdir('D:\\zip')
+
 today = date.today()
-pathForArchiv = 'D:\\zip'
-pathArchiv = 'D:\\zipout\\'
+pathForArchiv = '.\\'
+pathArchiv = '..\\zipout\\'
 
 zip_arhiv = zipfile.ZipFile(pathArchiv + str(today.year) + '_' + str(today.month) + '.zip', 'w')
 
@@ -26,4 +28,4 @@ for file in fileInZip.namelist():
             if file == zipFileName:
                 os.remove(file_path)
 
-fileInZip.close()
+fileInZip.close() 
