@@ -2,10 +2,14 @@ import os
 import zipfile
 import datetime
 from datetime import date
-
-os.chdir('D:\\zip')
-
 today = date.today()
+
+# Читаем файл содержащий пути для архивирования
+with open('paths.txt', 'r') as f:
+    paths = f.read().splitlines()
+
+os.chdir(paths[0])
+
 pathForArchiv = '.\\'
 pathArchiv = '..\\zipout\\'
 
